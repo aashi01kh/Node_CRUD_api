@@ -13,10 +13,13 @@ db.once('open',()=>console.log('connected to database'))
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(bodyParser.json());
+app.set('view engine','ejs');
 
-const employeerouter = require('./routes/employes')
-
-app.use('/employes',employeerouter)
+const aa = require('./routes/employes')
+app.get('/add',(req,res)=>{
+    res.render('add');
+})
+app.use('/employes',aa)
 app.use(express.json());
 app.listen(3000, ()=> console.log('server started'))
 

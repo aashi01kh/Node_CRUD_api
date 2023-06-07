@@ -1,12 +1,13 @@
 const express = require('express')
 const { default: mongoose } = require('mongoose')
+const { findByIdAndUpdate } = require('../models/employee')
 const router=express.Router()
 const employee = require('../models/employee')
 //GET ALL
-router.get('/',async(req,res)=>{
+router.get('/register',async(req,res)=>{
     try {
         const employe = await employee.find()
-        res.json(employe)
+        res.render('home',{data:employe})
       } catch (err) {
         res.status(500).json({ message: err.message })
       }
@@ -21,14 +22,14 @@ router.get('/:id',getemployee,(req,res)=>{
 
 //CREATE ONE
 router.post('/',async(req,res)=>{
-
+  console.log("hi");
     const employe = new employee({
         name: req.body.name,
         age: req.body.age
       })
       try {
         const newemploye= await employe.save()
-        res.status(201).json(newemploye)
+        res.redirect('/employes/register');
       } catch (err) {
         res.status(400).json({ message: err.message })
       }
@@ -44,6 +45,8 @@ router.patch('/:id', getemployee, async (req, res) => {
    
   }
       try {
+        
+        
         console.log(update);
         const done=await employee.findByIdAndUpdate(req.params.id,{$set:update},{new:true});
        done.save()
@@ -55,7 +58,7 @@ router.patch('/:id', getemployee, async (req, res) => {
 
 })
 //DELETE ONE
-router.delete('/:id',getemployee,async (req,res)=>{
+router.get('/delete/:id',getemployee,async (req,res)=>{
 
     try {
         await res.employe.remove()

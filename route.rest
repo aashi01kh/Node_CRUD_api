@@ -6,7 +6,7 @@ POST  http://localhost:3000/employes
 Content-Type: application/json
 
 {
-    "name":"jasnn",
+    "name":"ambica",
     "age":"54"
 }
 
@@ -23,4 +23,4 @@ PATCH      http://localhost:3000/employes/64034bf54d7724de705cc7aa
 }
 
 ###
-DELETE http://localhost:3000/employes/640331406b4e91b364e7c094
+DELETE http://localhost:3000/employes/64034bf54d7724de705c

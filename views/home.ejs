@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% if(data.length >=0){%>
+        <% data.forEach(data => {%>
+    <div class="card">
+        <h5 class="card-header"><%= data.name %> </h5>
+        <div class="card-body">
+          <h5 class="card-title"><%= data.age %></h5>
+         
+          <a href='http://localhost:3000/employes/delete/<%= data._id %>'class="btn btn-primary">delete</a>
+          <a href="http://localhost:3000/employes/update/<%= data._id %>" class="btn btn-primary">update</a>
+        </div>
+      </div>
+      <% }) %>
+      <% } %>
+      <a href="/add" class="btn btn-primary"> ADD</a>
+    
+</body>
+</html>
